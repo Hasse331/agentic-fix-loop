@@ -1,0 +1,12 @@
+{
+  "name": "fixloop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "node scripts/run-tests.mjs"
+  }
+}
