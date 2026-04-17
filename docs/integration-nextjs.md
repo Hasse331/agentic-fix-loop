@@ -4,6 +4,24 @@
 
 Install the widget package in your host app when it is published or linked locally.
 
+### Local package link before publish
+
+If you are developing against a local `agentic-fix-loop` checkout, use a `file:` dependency first:
+
+```json
+{
+  "dependencies": {
+    "@agentic-fix-loop/widget": "file:../../agentic-fix-loop/packages/widget"
+  }
+}
+```
+
+Then run:
+
+```bash
+npm install
+```
+
 ## Configure
 
 Set these environment variables:
@@ -11,6 +29,10 @@ Set these environment variables:
 - `AGENTIC_FIX_LOOP_PROJECT_NAME`
 - `NEXT_PUBLIC_AGENTIC_FIX_LOOP_SUPABASE_URL`
 - `NEXT_PUBLIC_AGENTIC_FIX_LOOP_SUPABASE_ANON_KEY`
+
+If you also want to run the local CLI pull flow before npm publish, add:
+
+- `AGENTIC_FIX_LOOP_SUPABASE_SERVICE_ROLE_KEY`
 
 ## Render The Widget
 

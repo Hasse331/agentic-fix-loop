@@ -66,6 +66,8 @@ The repository should start with these top-level areas:
    - `npx fixloop pull`
 9. The CLI resolves defaults from local config or `.env`, fetches open reports for the current project, and writes `reported-problems.md` by default.
 
+Before npm publish, the same flow can run from a local checkout by invoking the built CLI directly with `node --env-file`.
+
 ## Data Model
 
 V1 should keep a single main table named `problem_reports`.
@@ -154,6 +156,12 @@ Primary command:
 
 ```bash
 npx fixloop pull
+```
+
+Local development fallback before publish:
+
+```bash
+node --env-file=.env.development ../../agentic-fix-loop/packages/cli/dist/index.js pull
 ```
 
 Default behavior:
