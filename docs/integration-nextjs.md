@@ -14,6 +14,8 @@ Set these environment variables:
 
 ## Render The Widget
 
+### Option 1: Fast Floating Install
+
 Use the shortest supported integration path:
 
 ```tsx
@@ -35,4 +37,47 @@ export default function RootLayout({
 }
 ```
 
-If you want to control placement separately, use `AgenticFixLoopProvider` and `ReportProblemButton`.
+### Option 2: Embedded Trigger For Production Layouts
+
+If you want to control placement separately, use the provider, modal, and trigger pieces directly:
+
+```tsx
+import {
+  AgenticFixLoopProvider,
+  ReportProblemButton,
+  ReportProblemModal,
+} from "@agentic-fix-loop/widget";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <AgenticFixLoopProvider projectName="MiniMRP">
+          {children}
+          <footer>
+            <ReportProblemButton mode="embedded" appearance="text">
+              Report a problem
+            </ReportProblemButton>
+          </footer>
+          <ReportProblemModal />
+        </AgenticFixLoopProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Recommended rule of thumb:
+- use `AgenticFixLoop` for internal/admin tools
+- use embedded trigger mode for storefronts and polished production frontends
+
+### Trigger Options
+
+`ReportProblemButton` supports:
+- `mode="floating"` or `mode="embedded"`
+- `appearance="solid"` or `appearance="text"`
+- `position="bottom-right"` or `position="bottom-left"` for floating mode

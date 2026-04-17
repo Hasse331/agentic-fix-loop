@@ -21,6 +21,10 @@ Typical use:
 npx fixloop pull
 ```
 
+UI integration can now use either:
+- the fast floating `<AgenticFixLoop projectName="..."/>` path
+- the embedded provider + modal + trigger path for footer/help-link style production placement
+
 Optional overrides:
 
 ```bash

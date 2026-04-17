@@ -48,7 +48,7 @@ The repository should start with these top-level areas:
 2. The host project adds a small config surface such as project name and Supabase public credentials.
 3. The host app renders either:
    - `<AgenticFixLoop projectName="MiniMRP" />`, or
-   - a provider plus a custom button.
+   - a provider plus modal plus a custom trigger location such as the footer.
 4. A user clicks the report button.
 5. A modal asks for:
    - issue type: `BUG` or `UX`
@@ -125,9 +125,26 @@ The package should also expose lower-level composition pieces for later flexibil
 
 - `AgenticFixLoopProvider`
 - `ReportProblemButton`
+- `ReportProblemModal`
 - `useAgenticFixLoop`
 
 The host project should not need to create custom API routes for the default path.
+
+For production storefronts, the recommended composition pattern is:
+
+```tsx
+<AgenticFixLoopProvider projectName="MiniMRP">
+  {children}
+  <footer>
+    <ReportProblemButton mode="embedded" appearance="text">
+      Report a problem
+    </ReportProblemButton>
+  </footer>
+  <ReportProblemModal />
+</AgenticFixLoopProvider>
+```
+
+This keeps the modal and submission logic inside the package while letting the host application choose where the trigger belongs.
 
 ## CLI Experience
 
