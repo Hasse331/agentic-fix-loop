@@ -2,12 +2,14 @@ import type { ReportType } from "./types.ts";
 
 export interface ReportDraft {
   reportType: ReportType;
+  pageUrl: string;
   whatWereYouDoing: string;
   whatHappened: string;
   whatShouldHaveHappened: string;
 }
 
 export interface ReportDraftErrors {
+  pageUrl?: string;
   whatWereYouDoing?: string;
   whatHappened?: string;
   whatShouldHaveHappened?: string;
@@ -16,6 +18,7 @@ export interface ReportDraftErrors {
 export function createEmptyDraft(): ReportDraft {
   return {
     reportType: "bug",
+    pageUrl: "",
     whatWereYouDoing: "",
     whatHappened: "",
     whatShouldHaveHappened: ""
@@ -24,6 +27,10 @@ export function createEmptyDraft(): ReportDraft {
 
 export function validateReportDraft(draft: ReportDraft): ReportDraftErrors {
   const errors: ReportDraftErrors = {};
+
+  if (!draft.pageUrl.trim()) {
+    errors.pageUrl = "Tell us which page had the problem.";
+  }
 
   if (!draft.whatWereYouDoing.trim()) {
     errors.whatWereYouDoing = "Tell us what you were doing.";

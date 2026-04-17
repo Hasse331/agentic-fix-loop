@@ -8,6 +8,7 @@ import type { ReportType } from "./types.ts";
 export interface SubmitProblemReportInput {
   projectName: string;
   reportType: ReportType;
+  pageUrl: string;
   whatWereYouDoing: string;
   whatHappened: string;
   whatShouldHaveHappened: string;
@@ -39,7 +40,7 @@ export async function submitProblemReport(
   const { error } = await client.from("problem_reports").insert({
     project_name: input.projectName,
     report_type: input.reportType,
-    page_url: metadata.pageUrl,
+    page_url: input.pageUrl,
     what_were_you_doing: input.whatWereYouDoing,
     what_happened: input.whatHappened,
     what_should_have_happened: input.whatShouldHaveHappened,

@@ -23,6 +23,7 @@ test("submitProblemReport maps widget fields into the Supabase insert payload", 
     {
       projectName: "MiniMRP",
       reportType: "bug",
+      pageUrl: "https://example.com/products/42?manual=1",
       whatWereYouDoing: "Trying to save a product version.",
       whatHappened: "The save action did nothing.",
       whatShouldHaveHappened: "The product version should save."
@@ -44,7 +45,7 @@ test("submitProblemReport maps widget fields into the Supabase insert payload", 
   assert.deepEqual(payload, {
     project_name: "MiniMRP",
     report_type: "bug",
-    page_url: "https://example.com/products/42",
+    page_url: "https://example.com/products/42?manual=1",
     what_were_you_doing: "Trying to save a product version.",
     what_happened: "The save action did nothing.",
     what_should_have_happened: "The product version should save.",
@@ -75,6 +76,7 @@ test("submitProblemReport throws when Supabase returns an error", async () => {
         {
           projectName: "MiniMRP",
           reportType: "bug",
+          pageUrl: "https://example.com",
           whatWereYouDoing: "Trying to save.",
           whatHappened: "Nothing happened.",
           whatShouldHaveHappened: "It should save."
