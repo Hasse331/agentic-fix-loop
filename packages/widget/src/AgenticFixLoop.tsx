@@ -4,6 +4,7 @@ import {
   AgenticFixLoopProvider
 } from "./AgenticFixLoopProvider.tsx";
 import { ReportProblemButton } from "./ReportProblemButton.tsx";
+import { ReportProblemModal } from "./ReportProblemModal.tsx";
 
 export interface AgenticFixLoopProps {
   projectName: string;
@@ -22,7 +23,8 @@ export function AgenticFixLoop({
 
   return (
     <AgenticFixLoopProvider projectName={projectName}>
-      <ReportProblemButton position={position} />
+      <ReportProblemButton position={position} mode="floating" />
+      <ReportProblemModal />
     </AgenticFixLoopProvider>
   );
 }

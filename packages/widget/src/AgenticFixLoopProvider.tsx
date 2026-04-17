@@ -3,7 +3,8 @@
 import {
   createContext,
   type ReactNode,
-  useContext
+  useContext,
+  useState
 } from "react";
 
 interface AgenticFixLoopContextValue {
@@ -25,7 +26,7 @@ export function AgenticFixLoopProvider({
   projectName,
   children
 }: AgenticFixLoopProviderProps) {
-  const [isOpen, setIsOpen] = require("react").useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <AgenticFixLoopContext.Provider
