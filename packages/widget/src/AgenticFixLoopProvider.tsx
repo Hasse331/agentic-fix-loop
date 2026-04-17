@@ -8,6 +8,9 @@ import {
 
 interface AgenticFixLoopContextValue {
   projectName: string;
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
 }
 
 export interface AgenticFixLoopProviderProps {
@@ -22,8 +25,17 @@ export function AgenticFixLoopProvider({
   projectName,
   children
 }: AgenticFixLoopProviderProps) {
+  const [isOpen, setIsOpen] = require("react").useState(false);
+
   return (
-    <AgenticFixLoopContext.Provider value={{ projectName }}>
+    <AgenticFixLoopContext.Provider
+      value={{
+        projectName,
+        isOpen,
+        open: () => setIsOpen(true),
+        close: () => setIsOpen(false)
+      }}
+    >
       {children}
     </AgenticFixLoopContext.Provider>
   );
