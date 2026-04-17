@@ -145,6 +145,8 @@ Default behavior:
 - output path defaults to `reported-problems.md`
 - only open reports are fetched
 - reports are sorted newest first
+- `--project` is optional
+- `--output` is optional
 
 Optional flags can exist, but they should not be required for the main path:
 

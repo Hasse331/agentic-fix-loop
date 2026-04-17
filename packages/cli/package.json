@@ -1,0 +1,19 @@
+{
+  "name": "fixloop",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "fixloop": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --experimental-strip-types tests/run-tests.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.101.1"
+  }
+}

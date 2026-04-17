@@ -1,0 +1,11 @@
+{
+  "name": "agentic-fix-loop-nextjs-example",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@agentic-fix-loop/widget": "file:../../packages/widget",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
