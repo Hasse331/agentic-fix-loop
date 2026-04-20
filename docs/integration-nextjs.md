@@ -4,6 +4,23 @@
 
 Install the widget package in your host app when it is published or linked locally.
 
+### Published npm packages
+
+```bash
+npm install @hansimb/fix-loop-widget
+npm install --save-dev @hansimb/fix-loop-cli
+```
+
+Recommended host-project script:
+
+```json
+{
+  "scripts": {
+    "fixloop:pull": "node --env-file=.env.development ./node_modules/@hansimb/fix-loop-cli/dist/index.js pull"
+  }
+}
+```
+
 ### Local package link before publish
 
 If you are developing against a local `agentic-fix-loop` checkout, use a `file:` dependency first:
@@ -11,7 +28,7 @@ If you are developing against a local `agentic-fix-loop` checkout, use a `file:`
 ```json
 {
   "dependencies": {
-    "@agentic-fix-loop/widget": "file:../../agentic-fix-loop/packages/widget"
+    "@hansimb/fix-loop-widget": "file:../../agentic-fix-loop/packages/widget"
   }
 }
 ```
@@ -34,6 +51,8 @@ If you also want to run the local CLI pull flow before npm publish, add:
 
 - `AGENTIC_FIX_LOOP_SUPABASE_SERVICE_ROLE_KEY`
 
+The same service role key is also required for the published CLI package when you run `npm run fixloop:pull`.
+
 ## Render The Widget
 
 ### Option 1: Fast Floating Install
@@ -41,7 +60,7 @@ If you also want to run the local CLI pull flow before npm publish, add:
 Use the shortest supported integration path:
 
 ```tsx
-import { AgenticFixLoop } from "@agentic-fix-loop/widget";
+import { AgenticFixLoop } from "@hansimb/fix-loop-widget";
 
 export default function RootLayout({
   children
@@ -68,7 +87,7 @@ import {
   AgenticFixLoopProvider,
   ReportProblemButton,
   ReportProblemModal,
-} from "@agentic-fix-loop/widget";
+} from "@hansimb/fix-loop-widget";
 
 export default function RootLayout({
   children,

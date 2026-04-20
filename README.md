@@ -26,10 +26,20 @@ It gives you:
 <AgenticFixLoop projectName="MiniMRP" />
 ```
 
-4. Later, pull the open reports locally:
+4. Add a short host-project script:
+
+```json
+{
+  "scripts": {
+    "fixloop:pull": "node --env-file=.env.development ./node_modules/@hansimb/fix-loop-cli/dist/index.js pull"
+  }
+}
+```
+
+5. Later, pull the open reports locally:
 
 ```bash
-npx fixloop pull
+npm run fixloop:pull
 ```
 
 If you do not pass `--output`, the CLI writes `reported-problems.md`.
@@ -41,19 +51,29 @@ For production projects, install the published packages from npm.
 Frontend widget:
 
 ```bash
-npm install @agentic-fix-loop/widget
+npm install @hansimb/fix-loop-widget
 ```
 
 CLI:
 
 ```bash
-npm install --save-dev fixloop
+npm install --save-dev @hansimb/fix-loop-cli
 ```
 
 Then pull reports locally or in CI:
 
 ```bash
-npx fixloop pull
+npm run fixloop:pull
+```
+
+Recommended host-project script:
+
+```json
+{
+  "scripts": {
+    "fixloop:pull": "node --env-file=.env.development ./node_modules/@hansimb/fix-loop-cli/dist/index.js pull"
+  }
+}
 ```
 
 ## Local Development Before Npm Publish
@@ -67,7 +87,7 @@ In a nearby host project, point the dependency to the local widget package:
 ```json
 {
   "dependencies": {
-    "@agentic-fix-loop/widget": "file:../../agentic-fix-loop/packages/widget"
+    "@hansimb/fix-loop-widget": "file:../../agentic-fix-loop/packages/widget"
   }
 }
 ```
@@ -80,19 +100,21 @@ npm install
 
 ### Local CLI usage
 
-Before npm publish, this will not work yet:
+Before npm publish, point the host-project script to the local checkout instead:
 
-```bash
-npx fixloop pull
+```json
+{
+  "scripts": {
+    "fixloop:pull": "node --env-file=.env.development ../../agentic-fix-loop/packages/cli/dist/index.js pull"
+  }
+}
 ```
 
-Instead, run the built CLI directly from the `agentic-fix-loop` repo:
+Then run:
 
 ```bash
-node --env-file=.env.development ../../agentic-fix-loop/packages/cli/dist/index.js pull
+npm run fixloop:pull
 ```
-
-Run that command from the host project's root, with the correct relative path to the `agentic-fix-loop` repo.
 
 For local CLI usage, make sure the host project has:
 
@@ -114,7 +136,7 @@ import {
   AgenticFixLoopProvider,
   ReportProblemButton,
   ReportProblemModal,
-} from "@agentic-fix-loop/widget";
+} from "@hansimb/fix-loop-widget";
 
 export default function RootLayout({
   children,
@@ -156,7 +178,7 @@ CLI:
 ## Repository Layout
 
 - `packages/widget`: report button, modal, validation, metadata collection, Supabase insert flow
-- `packages/cli`: `fixloop pull` command and Markdown export
+- `packages/cli`: published CLI package and Markdown export flow
 - `supabase`: schema and RLS policies
 - `docs`: setup and workflow docs
 - `examples/nextjs`: minimal host-app integration example

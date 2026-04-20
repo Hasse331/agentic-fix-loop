@@ -17,7 +17,7 @@ The project does not include its own agent, issue dashboard, or full bug lifecyc
 - Work well for Next.js-style apps without requiring host-project backend work.
 - Send reports from many apps into one centralized Supabase database.
 - Keep reports anonymous while still capturing useful debugging context.
-- Give developers and agents a simple pull-based workflow such as `npx fixloop pull`.
+- Give developers and agents a simple pull-based workflow such as `npm run fixloop:pull`.
 
 ## Non-Goals For V1
 
@@ -63,7 +63,7 @@ The repository should start with these top-level areas:
    - viewport dimensions
 7. The widget writes the report into the centralized Supabase project using the public anon key plus a strict insert-only RLS policy.
 8. Later, a developer or their IDE agent runs:
-   - `npx fixloop pull`
+   - `npm run fixloop:pull`
 9. The CLI resolves defaults from local config or `.env`, fetches open reports for the current project, and writes `reported-problems.md` by default.
 
 Before npm publish, the same flow can run from a local checkout by invoking the built CLI directly with `node --env-file`.
@@ -155,7 +155,7 @@ The CLI must be optimized for speed and memorability.
 Primary command:
 
 ```bash
-npx fixloop pull
+npm run fixloop:pull
 ```
 
 Local development fallback before publish:
@@ -182,11 +182,11 @@ Optional flags can exist, but they should not be required for the main path:
 
 That means:
 
-- `npx fixloop pull`
+- `npm run fixloop:pull`
   should work in the happy path with zero extra typing
-- `npx fixloop pull --project SomeOtherProject`
+- `node --env-file=.env.development ./node_modules/@hansimb/fix-loop-cli/dist/index.js pull --project SomeOtherProject`
   should make switching projects easy
-- `npx fixloop pull --output triage.md`
+- `node --env-file=.env.development ./node_modules/@hansimb/fix-loop-cli/dist/index.js pull --output triage.md`
   should still be available when needed
 
 ## Markdown Export Shape

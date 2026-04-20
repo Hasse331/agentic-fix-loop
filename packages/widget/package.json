@@ -1,5 +1,5 @@
 {
-  "name": "@agentic-fix-loop/widget",
+  "name": "@hansimb/fix-loop-widget",
   "version": "0.1.0",
   "type": "module",
   "description": "Reusable React widget for collecting anonymous problem reports into Supabase.",

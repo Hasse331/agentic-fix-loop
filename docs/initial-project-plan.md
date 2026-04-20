@@ -73,7 +73,7 @@ reported-problems.md
 
 ```json
 {
-  "name": "@agentic-fix-loop/widget",
+  "name": "@hansimb/fix-loop-widget",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -597,7 +597,7 @@ git commit -m "feat: add fixloop pull command"
 ```md
 # agentic-fix-loop
 
-Install the widget, add your project name and Supabase public keys, render `<AgenticFixLoop projectName="MiniMRP" />`, and let users report problems. Then run `npx fixloop pull` to generate `reported-problems.md`.
+Install the widget, add your project name and Supabase public keys, render `<AgenticFixLoop projectName="MiniMRP" />`, and let users report problems. Then run `npm run fixloop:pull` to generate `reported-problems.md`.
 ```
 
 - [ ] **Step 2: Document the Next.js integration**
@@ -625,7 +625,7 @@ Install the widget, add your project name and Supabase public keys, render `<Age
 The developer or IDE agent runs:
 
 ```bash
-npx fixloop pull
+npm run fixloop:pull
 ```
 
 If no output path is provided, the CLI writes `reported-problems.md`.
@@ -637,7 +637,7 @@ If no output path is provided, the CLI writes `reported-problems.md`.
 Primary command:
 
 ```bash
-npx fixloop pull
+npm run fixloop:pull
 ```
 
 Defaults:
@@ -648,7 +648,7 @@ Defaults:
 
 - [ ] **Step 5: Review the docs for consistency**
 
-Run: `rg "reported-problems.md|npx fixloop pull|AGENTIC_FIX_LOOP_PROJECT_NAME" docs README.md`
+Run: `rg "reported-problems.md|fixloop:pull|AGENTIC_FIX_LOOP_PROJECT_NAME" docs README.md`
 Expected: all docs agree on the short command path and the default output file
 
 - [ ] **Step 6: Commit**
@@ -678,7 +678,7 @@ git commit -m "docs: add onboarding and agent workflow"
 - [ ] **Step 2: Add the minimal layout integration**
 
 ```tsx
-import { AgenticFixLoop } from "@agentic-fix-loop/widget";
+import { AgenticFixLoop } from "@hansimb/fix-loop-widget";
 
 export default function RootLayout({
   children

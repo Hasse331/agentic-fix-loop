@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { AgenticFixLoop } from "@agentic-fix-loop/widget";
+import { AgenticFixLoop } from "@hansimb/fix-loop-widget";
 
 export default function RootLayout({
   children
