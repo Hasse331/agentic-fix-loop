@@ -1,8 +1,17 @@
 {
   "name": "@hansimb/fix-loop-widget",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "Reusable React widget for collecting anonymous problem reports into Supabase.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansimb/agentic-fix-loop.git",
+    "directory": "packages/widget"
+  },
+  "bugs": {
+    "url": "https://github.com/hansimb/agentic-fix-loop/issues"
+  },
+  "homepage": "https://github.com/hansimb/agentic-fix-loop#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
