@@ -2,6 +2,7 @@
   "name": "@agentic-fix-loop/widget",
   "version": "0.1.0",
   "type": "module",
+  "description": "Reusable React widget for collecting anonymous problem reports into Supabase.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -12,6 +13,16 @@
   },
   "files": [
     "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "bug-reporting",
+    "feedback-widget",
+    "react",
+    "supabase"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -34,6 +34,28 @@ npx fixloop pull
 
 If you do not pass `--output`, the CLI writes `reported-problems.md`.
 
+## Production Install
+
+For production projects, install the published packages from npm.
+
+Frontend widget:
+
+```bash
+npm install @agentic-fix-loop/widget
+```
+
+CLI:
+
+```bash
+npm install --save-dev fixloop
+```
+
+Then pull reports locally or in CI:
+
+```bash
+npx fixloop pull
+```
+
 ## Local Development Before Npm Publish
 
 Before `fixloop` is published to npm, use it directly from the local repository.
@@ -138,3 +160,22 @@ CLI:
 - `supabase`: schema and RLS policies
 - `docs`: setup and workflow docs
 - `examples/nextjs`: minimal host-app integration example
+
+## Publishing To Npm
+
+Run these commands from the `agentic-fix-loop` repository root:
+
+```bash
+npm run release:check
+npm run pack:widget
+npm run pack:cli
+```
+
+If those pass, publish the packages:
+
+```bash
+npm publish --workspace packages/widget --access public
+npm publish --workspace packages/cli
+```
+
+The widget package is scoped, so it needs `--access public` on first publish.

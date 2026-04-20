@@ -2,11 +2,18 @@
   "name": "fixloop",
   "version": "0.1.0",
   "type": "module",
+  "description": "CLI for exporting open fixloop problem reports from Supabase into Markdown.",
   "bin": {
     "fixloop": "./dist/index.js"
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "bug-reporting",
+    "cli",
+    "markdown",
+    "supabase"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
